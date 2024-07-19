@@ -1,0 +1,45 @@
+def normalize_input(user_input):
+    return user_input.lower().strip()
+
+def main():
+    while True:
+        score = 0
+        answer = input("One day, Ahmed and his colleague were exploring the forest next to the university, but after a while they noticed that they had lost the right path. Do you want to know what will happen after that? (yes/no) ")
+        answer = normalize_input(answer)
+
+        if answer == "yes":
+            score += 10
+            print("They continued exploring, facing the unknown...")
+            answer = input("Suddenly, they faced an old man holding a cleaver, blood staining his shirt. He slowly walks towards them. Do you want to talk to him? (yes/no) ")
+            answer = normalize_input(answer)
+
+            if answer == "yes":
+                score -= 50
+                print("Are you serious you want to face him? He killed them. Game over.")
+            else:
+                score += 10
+                print("They decide to avoid the old man but suddenly, as they are avoiding him, he starts running after them holding his cleaver up and wanting to kill them.")
+
+                answer = input("As they were running away, they found a crossroads in front of them. Should we go to the right or to the left? (left/right) ")
+                answer = normalize_input(answer)
+
+                if answer == "right":
+                    score += 20
+                    print("You found a village and the villagers shoot the man, causing him to fall to his death. You survived!")
+                elif answer == "left":
+                    score -= 30
+                    print("You found a very high cliff in front of you, and because you were running fast, you fell off it. You died.")
+                else:
+                    score -= 10
+                    print("Invalid choice. The adventure ends here.")
+        else:
+            print("Man, you really don't want to continue.")
+        
+        print(f"Your final score is: {score}")
+        
+        try_again = input("Do you want to try again? (yes/no) ")
+        if normalize_input(try_again) != "yes":
+            break
+
+if __name__ == "__main__":
+    main()
